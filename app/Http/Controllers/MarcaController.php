@@ -42,17 +42,6 @@ class MarcaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Marca  $marca
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Marca $marca)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -60,8 +49,9 @@ class MarcaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Marca $marca)
-    {
-        //
+    {   
+        $marca->update($request->all());
+        return response()->json($marca);
     }
 
     /**
