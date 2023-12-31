@@ -14,17 +14,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $marcas = Marca::all();
+        return response()->json($marcas);
     }
 
     /**
@@ -35,7 +26,8 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $marca = Marca::create($request->all());
+        return response()->json($marca);
     }
 
     /**
