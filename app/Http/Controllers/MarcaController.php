@@ -49,7 +49,7 @@ class MarcaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Marca $marca)
-    {   
+    {
         $marca->update($request->all());
         return response()->json($marca);
     }
@@ -62,6 +62,7 @@ class MarcaController extends Controller
      */
     public function destroy(Marca $marca)
     {
-        //
+        $marca->delete();
+        return response()->json(["msg" => "Marca removida com sucesso"]);
     }
 }
