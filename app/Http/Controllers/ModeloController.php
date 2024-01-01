@@ -129,6 +129,6 @@ class ModeloController extends Controller
         }
         Storage::disk('public')->delete($modelo->imagem);
         $modelo->delete();
-        return response()->json(["msg" => "Marca removida com sucesso"], 200);
+        return response()->json(["msg" => "Modelo removida com sucesso"], 200);
     }
 }
