@@ -67,6 +67,9 @@ class MarcaController extends Controller
                 404
             );
         }
+
+        $request->validate($marca->rules(), $marca->feedback());
+
         $marca->update($request->all());
         return response()->json($marca, 200);
     }
