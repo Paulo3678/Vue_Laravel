@@ -17,11 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("cliente", "App\Http\Controllers\ClienteController")->middleware("jwt.auth");
-Route::apiResource("carro", "App\Http\Controllers\CarroController")->middleware("jwt.auth");
-Route::apiResource("locacao", "App\Http\Controllers\LocacaoController")->middleware("jwt.auth");
-Route::apiResource("marca", "App\Http\Controllers\MarcaController")->middleware("jwt.auth");
-Route::apiResource("modelo", "App\Http\Controllers\ModeloController")->middleware("jwt.auth");
+Route::group(["prefix" => "v1", "middleware" => "jwt.auth"], function () {
+    Route::apiResource("cliente", "App\Http\Controllers\ClienteController");
+    Route::apiResource("carro", "App\Http\Controllers\CarroController");
+    Route::apiResource("locacao", "App\Http\Controllers\LocacaoController");
+    Route::apiResource("marca", "App\Http\Controllers\MarcaController");
+    Route::apiResource("modelo", "App\Http\Controllers\ModeloController");
+});
 
 Route::post("login", "App\Http\Controllers\AuthController@login");
 Route::post("logout", "App\Http\Controllers\AuthController@logout");
