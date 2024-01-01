@@ -32,7 +32,7 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         $marca = $this->marca->create($request->all());
-        return response()->json($marca);
+        return response()->json($marca, 201);
     }
 
     /**
@@ -45,9 +45,9 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return response()->json(['erro' => 'Recurso pesquisado não existe']);
+            return response()->json(['erro' => 'Recurso pesquisado não existe'], 404);
         }
-        return response()->json($marca);
+        return response()->json($marca, 200);
     }
 
     /**
@@ -61,10 +61,13 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return response()->json(['erro' => 'Impossível realizar a atualização. Recurso pesquisado não existe']);
+            return response()->json(
+                ['erro' => 'Impossível realizar a atualização. Recurso pesquisado não existe'],
+                404
+            );
         }
         $marca->update($request->all());
-        return response()->json($marca);
+        return response()->json($marca, 200);
     }
 
     /**
@@ -77,9 +80,12 @@ class MarcaController extends Controller
     {
         $marca = $this->marca->find($id);
         if ($marca === null) {
-            return response()->json(['erro' => 'Impossível realizar exclusão .Recurso pesquisado não existe']);
+            return response()->json(
+                ['erro' => 'Impossível realizar exclusão .Recurso pesquisado não existe'],
+                404
+            );
         }
         $marca->delete();
-        return response()->json(["msg" => "Marca removida com sucesso"]);
+        return response()->json(["msg" => "Marca removida com sucesso"], 200);
     }
 }
