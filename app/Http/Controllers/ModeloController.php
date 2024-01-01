@@ -20,11 +20,18 @@ class ModeloController extends Controller
     public function index(Request $request)
     {
         $modelos = [];
+        if ($request->has("atributos_marca")) {
+            $atributos_marca = $request->atributos_marca;
+            $modelos = $this->modelo->with('marca:id,' . $atributos_marca);
+        } else {
+            $modelos = $this->modelo->with('marca');
+        }
+
         if ($request->has("atributos")) {
             $atributos = $request->atributos;
-            $modelos = $this->modelo->selectRaw($atributos)->with('marca')->get();
+            $modelos = $modelos->selectRaw($atributos)->get();
         } else {
-            $modelos = $this->modelo->with('marca')->get();
+            $modelos = $modelos->with('marca')->get();
         }
         return response()->json($modelos);
     }
