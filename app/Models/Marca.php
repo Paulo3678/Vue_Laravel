@@ -14,7 +14,7 @@ class Marca extends Model
     {
         return [
             'nome' => 'required|unique:marcas,nome,' . $this->id . '|min:3',
-            'imagem' => 'required',
+            'imagem' => 'required|file|mimes:png',
         ];
     }
     public function feedback(): array
@@ -22,7 +22,8 @@ class Marca extends Model
         return [
             'required' => 'O campo :attribute é obrigatório',
             'nome.unique' => 'O nome da marca já existe',
-            'nome.min' => 'O nome deve ter no mínimo :min caracteres'
+            'nome.min' => 'O nome deve ter no mínimo :min caracteres',
+            'imagem.mimes' => 'O arquivo deve ser uma imagem do tipo png'
         ];
     }
 }
