@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Marca;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Integer;
@@ -88,6 +89,10 @@ class MarcaController extends Controller
             $request->validate($marca->rules(), $marca->feedback());
         }
 
+        if ($request->file('imagem')) {
+            Storage::disk('public')->delete($marca->imagem);
+        }
+
         $imagem = $request->file("imagem");
         $imagem_urn = $imagem->store("imagens", "public");
 
@@ -113,6 +118,7 @@ class MarcaController extends Controller
                 404
             );
         }
+        Storage::disk('public')->delete($marca->imagem);
         $marca->delete();
         return response()->json(["msg" => "Marca removida com sucesso"], 200);
     }
