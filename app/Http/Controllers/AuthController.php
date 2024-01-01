@@ -8,7 +8,12 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        return 'login';
+        // Faz a autenticação e gera o token
+        $token = auth('api')->attempt($request->all(['email', 'password']));
+        if ($token) {
+            return response()->json(["token" => $token]);
+        }
+        return response()->json(['erro'=> 'Usuário ou senha inválido'], 403);
     }
 
     public function logout(Request $request)
