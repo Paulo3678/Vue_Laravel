@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -45,14 +45,14 @@
                                 <a href="#" class="nav-link">Locações</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navveiculos"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navveiculos" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Veículos
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navveiculos">
                                     <li><a class="dropdown-item" href="#">Carros</a></li>
                                     <div class="dropdown-divider"></div>
-                                    <li><a class="dropdown-item" href="#">Marcas</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('marcas') }}">Marcas</a></li>
                                     <li><a class="dropdown-item" href="#">Modelo</a></li>
                                 </ul>
                             </li>
