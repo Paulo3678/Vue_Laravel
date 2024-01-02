@@ -9,7 +9,7 @@
                         <form method="POST" @submit.prevent="login($event)">
                             <input type="hidden" name="_token" :value="csrf_token">
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="" required
@@ -39,7 +39,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
 
                                         <label class="form-check-label" for="remember">
-                                            Remember Me
+                                            Lembrar de mim
                                         </label>
                                     </div>
                                 </div>
@@ -50,10 +50,6 @@
                                     <button type="submit" class="btn btn-primary">
                                         Login
                                     </button>
-
-                                    <a class="btn btn-link" href="">
-                                        Forgot Your Password?
-                                    </a>
                                 </div>
                             </div>
                         </form>
