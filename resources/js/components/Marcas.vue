@@ -3,10 +3,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <!-- INICIO CARD BUSCA -->
-                <div class="card mb-3">
-                    <div class="card-header">Busca de marcas</div>
-
-                    <div class="card-body">
+                <card-component titulo="Busca de marcas">
+                    <template v-slot:conteudo>
                         <div class="row">
                             <div class="col">
                                 <input-container-component id="inputId" titulo="ID" type="number"
@@ -24,28 +22,25 @@
                                 </input-container-component>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-end">
+                    </template>
+                    <template v-slot:rodape>
                         <button type="submit" class="btn btn-primary btn-sm">
                             Pesquisar
                         </button>
-                    </div>
-                </div>
+                    </template>
+                </card-component>
 
                 <!-- INICIO CARD LISTAGEM DE MARCAS -->
-                <div class="card">
-                    <div class="card-header">Relação de marcas</div>
-
-                    <div class="card-body">
+                <card-component titulo="Relação de Marcas">
+                    <template v-slot:conteudo>
                         <table-component />
-                    </div>
-
-                    <div class="card-footer d-flex justify-content-end">
+                    </template>
+                    <template v-slot:rodape>
                         <button type="button" class="btn btn-primary btn-sm">
                             Adicionar
                         </button>
-                    </div>
-                </div>
+                    </template>
+                </card-component>
             </div>
         </div>
     </div>
@@ -53,8 +48,5 @@
 
 <script lang="ts">
 export default {
-    mounted() {
-        console.log('Component mounted.')
-    }
 }
 </script>
