@@ -90,9 +90,15 @@ export default {
             };
 
             fetch(url, config)
-                .then(response => {
-                    console.log(response);
+                .then(response => response.json())
+                .then(data => {
+                    if (data.token) {
+                        // permite que os cookies sejam encaminhados por padrão nas requisições HTTP
+                        // colocando o nome "token", o laravel já reconhece ele como um token de autenticação
+                        document.cookie = "token=" + data.token + ";SameSite=Lax";
+                    }
                 });
+            e.target.submit();
         }
     }
 }

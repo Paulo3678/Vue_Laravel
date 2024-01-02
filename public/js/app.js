@@ -5134,8 +5134,15 @@ __webpack_require__.r(__webpack_exports__);
         })
       };
       fetch(url, config).then(function (response) {
-        console.log(response);
+        return response.json();
+      }).then(function (data) {
+        if (data.token) {
+          // permite que os cookies sejam encaminhados por padrão nas requisições HTTP
+          // colocando o nome "token", o laravel já reconhece ele como um token de autenticação
+          document.cookie = "token=" + data.token + ";SameSite=Lax";
+        }
       });
+      e.target.submit();
     }
   }
 });
