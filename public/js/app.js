@@ -27782,11 +27782,92 @@ var staticRenderFns = [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Marcas")]),
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Busca de marcas"),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n                    as\n                "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "form-group mb-3" }, [
+                    _c("label", { attrs: { for: "inputId" } }, [_vm._v("ID")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        id: "inputId",
+                        "aria-describedby": "idHelp",
+                        placeholder: "ID",
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "idHelp" },
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Opcional. Informe o ID do registro.\n                                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "form-group mb-3" }, [
+                    _c("label", { attrs: { for: "inputNome" } }, [
+                      _vm._v("Nome"),
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "inputNome",
+                        "aria-describedby": "nomeHelp",
+                        placeholder: "Nome",
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "nomeHelp" },
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Opcional. Informe o nome da marca.\n                                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
             ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-footer d-flex justify-content-end" },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary btn-sm",
+                    attrs: { type: "submit" },
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Pesquisar\n                    "
+                    ),
+                  ]
+                ),
+              ]
+            ),
           ]),
         ]),
       ]),
