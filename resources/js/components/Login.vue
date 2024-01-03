@@ -75,7 +75,7 @@ export default {
         };
     },
     methods: {
-        login(e) {
+        async login(e) {
             let url = "http://localhost:8000/api/v1/login"
             let config = {
                 method: 'post',
@@ -85,7 +85,7 @@ export default {
                 })
             };
 
-            fetch(url, config)
+            await fetch(url, config)
                 .then(response => response.json())
                 .then(data => {
                     if (data.token) {
