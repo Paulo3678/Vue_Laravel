@@ -5239,7 +5239,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      urlBase: 'http://localhost:8000/api/v1/marca',
+      nomeMarca: '',
+      arquivoImagem: []
+    };
+  },
+  methods: {
+    carregarImagem: function carregarImagem(event) {
+      this.arquivoImagem = event.target.files;
+    },
+    salvar: function salvar() {
+      var formData = new FormData();
+      formData.append("nome", this.nomeMarca);
+      formData.append("imagem", this.arquivoImagem[0]);
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Accept': 'application/json'
+        }
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(this.urlBase, formData, config).then(function (response) {
+        console.log(response);
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -28439,12 +28471,29 @@ var render = function () {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.nomeMarca,
+                          expression: "nomeMarca",
+                        },
+                      ],
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
                         id: "novoNome",
                         "aria-describedby": "novoNomeHelp",
                         placeholder: "Informe o nome da marca",
+                      },
+                      domProps: { value: _vm.nomeMarca },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.nomeMarca = $event.target.value
+                        },
                       },
                     }),
                   ]
@@ -28470,6 +28519,11 @@ var render = function () {
                         "aria-describedby": "novoImagemHelp",
                         placeholder: "Selecione uma imagem",
                       },
+                      on: {
+                        change: function ($event) {
+                          return _vm.carregarImagem($event)
+                        },
+                      },
                     }),
                   ]
                 ),
@@ -28492,7 +28546,15 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.salvar()
+                      },
+                    },
+                  },
                   [_vm._v("Salvar")]
                 ),
               ]
@@ -40802,6 +40864,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
